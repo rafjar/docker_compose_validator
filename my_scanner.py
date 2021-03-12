@@ -60,6 +60,7 @@ class Scanner:
                     if current_indent_size >= indent:
                         break
                     self.tokens.append(Token('END_CODE_BLOCK', indent_lvl, self.line, start-self.line_start+1))
+                    self.indent_lvl -= 1
                     self.indentiation.pop()
 
             self.position = self.indentation_match(self.text, self.position).end()
