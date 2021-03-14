@@ -6,8 +6,15 @@ Indent = collections.namedtuple('Indent', ('indent_lvl', 'indent_size'))
 
 
 class Scanner:
-    def __init__(self, text):
+    def __init__(self, path):
+        with open(path) as f:
+            text = f.read()
+
         self.text = '\n'.join(list(filter(lambda x: not re.match(r'^\s*$', x), text.split('\n')))) + '\n'
+
+        with open(path, 'w') as f:
+            f.write(self.text)
+
         self.tokens = []
         self.indentation_match = re.compile(r'[ \t]*').match
         self.sequence_match = re.compile(r'[ \t]*\-').match
