@@ -78,7 +78,6 @@ class Parser:
         self.get_token('END_CODE_BLOCK')
 
         print(f'{n_token:<3} Statement build_content parsed correctly')
-        pass
 
     def environment_prod(self):
         n_token = self.n_token
