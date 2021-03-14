@@ -1,0 +1,57 @@
+program
+    -> version_prod program
+    -> services_prod program
+    -> image_prod program
+    -> ports_prod program
+    -> networks_prod program
+    -> deploy_prod program
+    -> volumes_prod program
+    -> environment_prod program
+    -> BUILD_ID COLON build_prod program
+    -> ID COLON unknow_id_prod program
+    -> EPSILON
+
+version_prod
+    -> VERSION_ID COLON VERSION_VAL
+
+services_prod
+    -> SERVICES_ID COLON CODE_BLOCK program END_CODE_BLOCK
+
+image_prod
+    -> IMAGE_ID COLON ID
+
+ports_prod
+    -> PORTS_ID COLON SEQUENCE_BLOCK ports_sequence END_CODE_BLOCK
+
+networks_prod
+    -> NETWORKS_ID COLON unknow_id_prod
+
+deploy_prod
+    -> DEPLOY_ID COLON unknow_id_prod
+
+volumes_prod
+    -> VOLUMES_ID COLON unknow_id_prod
+
+environment_prod
+    -> ENVIRONMENT_ID COLON unknow_id_prod
+
+build_prod
+    -> BUILD_PATH 
+    -> build_content
+
+build_content
+    -> CODE_BLOCK CONTEXT_ID COLON BUILD_PATH program END_CODE_BLOCK
+
+unknow_id_prod
+    -> CODE_BLOCK program END_CODE_BLOCK
+    -> SEQUENCE_BLOCK sequence_block_prod END_CODE_BLOCK
+    -> value_prod
+
+value_prod
+    -> ID
+    -> STRING
+    -> BUILD_PATH
+
+sequence_block_prod
+    -> DASH value_prod sequence_block_prod
+    -> EPSILON

@@ -7,3 +7,7 @@ with open('compose.yaml') as f:
 
 scanner = Scanner(text)
 pprint(scanner.tokens)
+pprint('-----')
+
+parser = Parser(scanner)
+parser.start()

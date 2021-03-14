@@ -28,3 +28,12 @@ volumes:
 
 networks:
   overlay:
+
+    
+build: ./dir
+
+build:
+  context: ./dir2
+  dockerfile: Dockerfile-alternate
+  args:
+    builsdno: 1
