@@ -1,3 +1,6 @@
+start
+    -> program EOF
+
 program
     -> version_prod program
     -> services_prod program
@@ -23,6 +26,10 @@ image_prod
 ports_prod
     -> PORTS_ID COLON SEQUENCE_BLOCK ports_sequence END_CODE_BLOCK
 
+ports_sequence
+    -> DASH PORTS_VAL ports_sequence
+    -> EPSILON
+
 networks_prod
     -> NETWORKS_ID COLON unknow_id_prod
 
@@ -47,11 +54,11 @@ unknow_id_prod
     -> SEQUENCE_BLOCK sequence_block_prod END_CODE_BLOCK
     -> value_prod
 
+sequence_block_prod
+    -> DASH value_prod sequence_block_prod
+    -> EPSILON
+
 value_prod
     -> ID
     -> STRING
     -> BUILD_PATH
-
-sequence_block_prod
-    -> DASH value_prod sequence_block_prod
-    -> EPSILON
